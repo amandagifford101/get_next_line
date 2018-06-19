@@ -8,7 +8,7 @@ else
 endif
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
 SRC =	ft_bzero.c \
 		ft_itoa.c \
 		ft_mem{alloc,ccpy,chr,cmp,cpy,del,move,set}.c \

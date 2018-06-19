@@ -6,7 +6,7 @@
 /*   By: agifford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/02 00:41:17 by agifford          #+#    #+#             */
-/*   Updated: 2018/05/08 00:00:46 by agifford         ###   ########.fr       */
+/*   Updated: 2018/06/18 16:47:44 by agifford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_strndup(const char *s1, size_t n)
 	size_t	i;
 
 	i = 0;
-	if (!(str = (char *)malloc(sizeof(char) * (n + 1))))
+	if (!(str = (char *)ft_memalloc(sizeof(char) * (n + 1))))
 		return (NULL);
 	while (s1[i] && i < n)
 	{
