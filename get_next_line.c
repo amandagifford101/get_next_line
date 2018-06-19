@@ -1,6 +1,6 @@
 /* ************************************************************************** */
+
 #include "get_next_line.h"
-#include <stdio.h>
 
 static t_line	*init_line(int fd)
 {

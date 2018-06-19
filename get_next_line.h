@@ -1,7 +1,7 @@
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-#include "libft/libft.h"
+#include "./libft/libft.h"
 # define IS_LEFT(x) (x ? (1) : (0))
 
 #define BUFF_SIZE 16
