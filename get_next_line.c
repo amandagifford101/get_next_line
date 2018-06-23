@@ -2,15 +2,17 @@
 
 #include "get_next_line.h"
 
+#include <stdio.h>
+
 static t_line	*init_line(int fd)
 {
 	t_line	*bam;
 
 	bam = ft_memalloc(sizeof(t_line));
 	bam->fd = fd;
-	bam->ret = 1;
-	bam->lo = ft_memalloc(sizeof(char) * BUFF_SIZE);
-	bam->temp = ft_memalloc(sizeof(char) * BUFF_SIZE);
+	bam->ret = 0;
+	bam->lo = ft_memalloc(0);
+	bam->temp = ft_memalloc(0);
 	return (bam);
 }
 
@@ -31,6 +33,13 @@ static int		check_leftovers(t_line *bam, char **line)
 			return (1);
 		}
 		i++;
+	}
+	if (bam->lo[i] == 0 && bam->ret == 0)
+	{
+		*line = ft_strndup(bam->lo, i - 1);
+		free(bam->lo);
+		bam->lo = ft_memalloc(1);
+		return (1);
 	}
 	return (0);
 }
@@ -57,7 +66,7 @@ int				get_next_line(const int fd, char **line)
 	static t_list	*head;
 	t_line			*GNL;
 
-	if (fd < 0 || !line)
+	if (fd < 0 || line == NULL) 		
 		return (-1);
 	if (!head)
 	{
@@ -67,7 +76,7 @@ int				get_next_line(const int fd, char **line)
 	GNL = check_list(head, fd);
 	if (GNL && !(check_leftovers(GNL, line)))
 	{
-		while ((GNL->ret = read(fd, GNL->buff, BUFF_SIZE)) > 0)					
+		while ((GNL->ret = read(fd, GNL->buff, BUFF_SIZE)) > 0)
 		{
 			GNL->temp = GNL->lo;
 			GNL->lo = ft_strjoin(GNL->lo, GNL->buff);
@@ -76,8 +85,10 @@ int				get_next_line(const int fd, char **line)
 			 if (GNL && check_leftovers(GNL, line))
 				return (1);
 		}
-		if (GNL->ret == 0 && !IS_LEFT(*GNL->lo))
-			return (0);		
+		if (GNL->ret == 0 && !check_leftovers(GNL, line))
+			return (0);
 	}
-	return (1);
+	if (IS_LEFT(GNL->lo))
+			return (1);
+	return (0);
 }
