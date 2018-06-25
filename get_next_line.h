@@ -9,6 +9,7 @@ typedef struct		s_line
 {
 	int				fd;
 	int				ret;
+	int				done;
 	char			*temp;
 	char			*lo;
 	char			buff[BUFF_SIZE + 1];
