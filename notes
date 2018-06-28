@@ -1,0 +1,14 @@
+malloc error being caused with BUFF_SIZE = len of file... example is with 2 lines
+with 16 chars with Line Feed. 
+
+test #12 is with STDIN (FD = 0), 4 lines with 16 chars with Line Feed
+
+test #13 is 1 line with 4 chars with Line Feed
+
+test #18 is STDIN: 4 lines 4 chars with Line Feed
+
+test #19 is 1 line 8 chars without Line Feed
+
+test #20 is 2 lines 8 chars without Line Feed: must have returned '1' twice insteadof 51 times....must have read "1234567" and "abcdefg"
+
+test #26 is bad File Descriptor #2 (gnl9_2.c)
