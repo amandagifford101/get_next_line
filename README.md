@@ -26,7 +26,7 @@ make -C libft                               ************do I need the C*********
 
 Compile executable with:
 
-gcc -Wall -Werror -Wextra main2.c libft/libft.a get_next_line.c
+gcc -Wall -Werror -Wextra main.c libft/libft.a get_next_line.c
 
 Run executable with:
 
