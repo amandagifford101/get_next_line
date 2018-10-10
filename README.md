@@ -22,7 +22,7 @@ git clone https://github.com/amandagifford33/get_next_line.git get_next_line
 Get into it and build Library:
 
 cd get_next_line
-make -C libft                               ************do I need the C***************
+make -C libft                               
 
 Compile executable with:
 
@@ -32,7 +32,7 @@ Run executable with:
 
 ./a.out test.txt
 
-This should automatically read the whole file for you, just as if you had used the cat() function. **********ok to abbrev cat like this?***
+This should automatically read the whole file for you, just as if you had used the cat() function. 
 
 
 
